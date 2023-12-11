@@ -1,33 +1,33 @@
-
-from faker import Faker
-from flask import Flask
+from flask import Flask, render_template
 from markupsafe import escape
 from pymongo import MongoClient
+from bson import ObjectId, json_util
+import json
 
 app = Flask(__name__)
-
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+client = MongoClient()
+db = client["library_test3"]
+persons = db["persons"]
+books = db["books"]
 
 @app.route("/persons/")
 def get_persons():
-    client = MongoClient()
-    db = client["library_test2"]
-    persons = db["persons"]
-    return list(persons.find()) 
+    data = persons.find() 
+    return render_template('persons.html', persons=data)
 
-@app.route("/test/")
-def angrytest():
-    angry_string = "<script>alert(\"bad\")</script>"
-    #return f"<p>Hello, { escape(angry_string) } !</p>"
-    return f"<p>Hello, {angry_string} !</p>"
+@app.route("/books/")
+def get_books():
+    data = books.find()
+    return render_template('books.html', books=data)
 
-@app.route("/test/<name>")
-def test(name):
-    return f"<p>Hello, {name}!</p>"
+@app.route("/persons/<id>")
+def get_person(id):
+    data = persons.find_one({"_id": ObjectId(id)})
+    return render_template('persons.html', persons=[data]) 
+#json.loads(json_util.dumps(data)) 
 
-@app.route('/path/<path:subpath>')
-def show_subpath(subpath):
-    # show the subpath after /path/
-    return f'Subpath {escape(subpath)}'
+@app.route("/books/<id>")
+def get_book(id):
+    data = books.find_one({"_id": ObjectId(id)})
+    return render_template('books.html', books=[data])
+    # return json.loads(json_util.dumps(data)) 

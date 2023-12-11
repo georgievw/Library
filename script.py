@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from faker import Faker
 from datetime import date, datetime, timedelta, timezone
 
-DB_NAME = "library_test2"
+DB_NAME = "library_test3"
 N_PERSONS = 10
 N_BOOKS = 10
 
