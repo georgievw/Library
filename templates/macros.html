@@ -1,0 +1,15 @@
+{% macro print_book(book) %}
+    <a href="/books/{{book['_id']}}"> {{book['_id']}}</a> 
+    <p> {{ book['title'] }} </p>
+    <p> {{ ', '.join(book['authors'])  }} </p>
+    <p> {{ ', '.join(book['tags']) }} </p>
+{% endmacro %}
+
+{% macro print_person(person) %}
+    <a href="/persons/{{person['_id']}}"> {{person['_id']}}</a> 
+    <p> {{ person['name'] }} </p>
+    <p> {{ person['address'] }} </p>
+    <p> {{ person['phone'] }} </p>
+    <p> {{ person['passport'] }} </p>
+    <p> {{ person['registration_date'] }} </p>
+{% endmacro %}

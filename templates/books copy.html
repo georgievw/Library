@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<ul>
+    {% for book in books %}
+    <li>
+        <a href="/books/{{book['_id']}}"> {{book['_id']}}</a> 
+        <p> {{ book['title'] }} </p>
+        <p> {{ ', '.join(book['authors'])  }} </p>
+        <p> {{ ', '.join(book['tags']) }} </p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

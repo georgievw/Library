@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<ul>
+    {% for person in persons %}
+    <li>
+        <a href="/persons/{{person['_id']}}"> {{person['_id']}}</a> 
+        <p> {{ person['name'] }} </p>
+        <p> {{ person['address'] }} </p>
+        <p> {{ person['phone'] }} </p>
+        <p> {{ person['passport'] }} </p>
+        <p> {{ person['registration_date'] }} </p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

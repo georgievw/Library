@@ -1,13 +1,10 @@
+{% import 'macros.html' as m %}
+
 {% extends "base.html" %}
 {% block content %}
 <ul>
     {% for book in books %}
-    <li>
-        <a href="/books/{{book['_id']}}"> {{book['_id']}}</a> 
-        <p> {{ book['title'] }} </p>
-        <p> {{ ', '.join(book['authors'])  }} </p>
-        <p> {{ ', '.join(book['tags']) }} </p>
-    </li>
+    <li>{{ m.print_book(book) }}</li>
     {% endfor %}
 </ul>
 {% endblock %}
