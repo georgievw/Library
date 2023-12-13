@@ -1,0 +1,20 @@
+{% import 'macros.html' as m %}
+
+{% extends "base.html" %}
+{% block content %}
+<p>Инфа о книга</p>
+<ul>
+    <li>{{ m.print_book(book) }}</li>
+</ul>
+<p>Инфа о текущей сделки</p>
+    {% if book['open_deal'] %}
+    <li>{{ m.print_deal(book['open_deal']) }}</li>
+    {% endif %}
+</ul>
+<p>Инфа о закрытых сделках</p>
+<ul>
+    {% for closed_deal in book['closed_deals'] %}
+    <li>{{ m.print_deal(closed_deal) }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

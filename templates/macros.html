@@ -13,3 +13,17 @@
     <p> {{ person['passport'] }} </p>
     <p> {{ person['registration_date'] }} </p>
 {% endmacro %}
+
+{% macro print_deal(deal) %}
+    {% if deal['person_id'] %}
+    <a href="/persons/{{deal['person_id']}}"> {{deal['person_name']}}</a> 
+    {% endif %}
+    {% if deal['book_id'] %}
+    <a href="/books/{{deal['book_id']}}"> {{deal['book_title']}}</a> 
+    {% endif %}
+    <p> {{ deal['issue_date']}} </p>
+    <p> {{ deal['return_date']}} </p>
+    {% if deal['fact_return_date'] %}
+    <p> {{ deal['fact_return_date'] }} </p>
+    {% endif %}
+{% endmacro %}

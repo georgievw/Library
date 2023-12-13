@@ -6,7 +6,7 @@ import json
 
 app = Flask(__name__)
 client = MongoClient()
-db = client["library_test3"]
+db = client["library_test8"]
 persons = db["persons"]
 books = db["books"]
 
@@ -23,11 +23,13 @@ def get_books():
 @app.route("/persons/<id>")
 def get_person(id):
     data = persons.find_one({"_id": ObjectId(id)})
-    return render_template('persons.html', persons=[data]) 
+    return render_template('person.html', person=data) 
 #json.loads(json_util.dumps(data)) 
 
 @app.route("/books/<id>")
 def get_book(id):
     data = books.find_one({"_id": ObjectId(id)})
-    return render_template('books.html', books=[data])
+    return render_template('book.html', book=data)
     # return json.loads(json_util.dumps(data)) 
+
+
