@@ -2,6 +2,16 @@
 
 {% extends "base.html" %}
 {% block content %}
+<form action="/persons/" method="get">
+    <p>А вот тут поиск</p>
+    <p>
+        <label for="name">Поиск по имени</label>
+        <input type="text" name="name">
+    </p>
+    <p>
+        <input type="submit">
+    </p>
+</form>
 <ul>
     {% for person in persons %}
     <li>{{ m.print_person(person) }}</li>

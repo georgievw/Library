@@ -2,6 +2,16 @@
 
 {% extends "base.html" %}
 {% block content %}
+<form action="/books/" method="get">
+    <p>А вот тут поиск</p>
+    <p>
+        <label for="title">Поиск по названию</label>
+        <input type="text" name="title">
+    </p>
+    <p>
+        <input type="submit">
+    </p>
+</form>
 <ul>
     {% for book in books %}
     <li>{{ m.print_book(book) }}</li>

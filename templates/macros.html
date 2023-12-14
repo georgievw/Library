@@ -3,6 +3,11 @@
     <p> {{ book['title'] }} </p>
     <p> {{ ', '.join(book['authors'])  }} </p>
     <p> {{ ', '.join(book['tags']) }} </p>
+    {% if book['open_deal'] %}
+    <p>Занята</p>
+    {% else %}
+    <p>Свободна</p>
+    {% endif %}
 {% endmacro %}
 
 {% macro print_person(person) %}
