@@ -1,34 +1,43 @@
 {% macro print_book(book) %}
-    <a href="/books/{{book['_id']}}"> {{book['_id']}}</a> 
-    <p> {{ book['title'] }} </p>
-    <p> {{ ', '.join(book['authors'])  }} </p>
-    <p> {{ ', '.join(book['tags']) }} </p>
-    {% if book['open_deal'] %}
-    <p>Занята</p>
-    {% else %}
-    <p>Свободна</p>
-    {% endif %}
+<ul class="list-group list-group-horizontal">
+    <li class="list-group-item">
+        <a href="/books/{{book['_id']}}"> {{book['_id']}}</a> 
+    </li>
+    <li class="list-group-item">{{ book['title'] }}</li>
+    <li class="list-group-item">{{ ', '.join(book['authors'])}}</li>
+    <li class="list-group-item">{{ ', '.join(book['tags'])}}</li>
+</ul>
 {% endmacro %}
 
 {% macro print_person(person) %}
-    <a href="/persons/{{person['_id']}}"> {{person['_id']}}</a> 
-    <p> {{ person['name'] }} </p>
-    <p> {{ person['address'] }} </p>
-    <p> {{ person['phone'] }} </p>
-    <p> {{ person['passport'] }} </p>
-    <p> {{ person['registration_date'] }} </p>
+<ul class="list-group list-group-horizontal">
+    <li class="list-group-item">
+        <a href="/persons/{{person['_id']}}"> {{person['_id']}}</a> 
+    </li>
+    <li class="list-group-item">{{ person['name'] }}</li>
+    <li class="list-group-item">{{ person['address'] }}</li>
+    <li class="list-group-item">{{ person['phone'] }}</li>
+    <li class="list-group-item">{{ person['passport'] }}</li>
+    <li class="list-group-item">{{ person['registration_date'] }}</li>
+</ul>
 {% endmacro %}
 
 {% macro print_deal(deal) %}
+<ul class="list-group list-group-horizontal">
     {% if deal['person_id'] %}
-    <a href="/persons/{{deal['person_id']}}"> {{deal['person_name']}}</a> 
+    <li class="list-group-item">
+        <a href="/persons/{{deal['person_id']}}"> {{deal['person_name']}}</a> 
+    </li>
     {% endif %}
     {% if deal['book_id'] %}
-    <a href="/books/{{deal['book_id']}}"> {{deal['book_title']}}</a> 
+    <li class="list-group-item">
+        <a href="/books/{{deal['book_id']}}"> {{deal['book_title']}}</a> 
+    </li>
     {% endif %}
-    <p> {{ deal['issue_date']}} </p>
-    <p> {{ deal['return_date']}} </p>
+    <li class="list-group-item">{{ deal['issue_date']}} </li>
+    <li class="list-group-item">{{ deal['return_date']}} </li>
     {% if deal['fact_return_date'] %}
-    <p> {{ deal['fact_return_date'] }} </p>
+    <li class="list-group-item">{{ deal['fact_return_date'] }} </li>
     {% endif %}
+</ul>
 {% endmacro %}

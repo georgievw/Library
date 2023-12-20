@@ -1,0 +1,12 @@
+body{
+    font-size: smaller; 
+}
+
+nav{
+    font-size: medium;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+}

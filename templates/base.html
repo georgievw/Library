@@ -2,12 +2,28 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link type="text/css" href="{{ url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
     <title>Library</title>
 </head>
 <body>
-    <p>Верхушка блин</p>
-    <a href="/persons">Чуваки</a>
-    <a href="/books">Книги</a>
-    <div id="content">{% block content %}{% endblock %}</div>
+   <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Library</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/persons">Читатели</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/books">Книги</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-bg border-0" id="content" style="border:0px">
+    {% block content %}{% endblock %}
+    </div>
+    </div>
 </body>
 </html>

@@ -4,11 +4,11 @@ import random
 from pymongo import MongoClient
 from faker import Faker
 
-DB_NAME = "library_test10"
-N_PERSONS = 5
-N_BOOKS = 10
-N_CLOSED_DEALS = 10
-N_OPEN_DEALS = 5
+DB_NAME = "library"
+N_PERSONS = 10
+N_BOOKS = 20
+N_CLOSED_DEALS = 30
+N_OPEN_DEALS = 10
 
 client = MongoClient()
 db = client[DB_NAME]
@@ -51,7 +51,7 @@ for _ in range(N_CLOSED_DEALS):
     deal['fact_return_date'] = fake.date_time_between()
 
     book_deal = deal.copy()
-    book_deal['people_id'] = person['_id']
+    book_deal['person_id'] = person['_id']
     book_deal['person_name'] = person['name']
 
     person_deal = deal

@@ -2,19 +2,44 @@
 
 {% extends "base.html" %}
 {% block content %}
-<form action="/persons/" method="get">
-    <p>А вот тут поиск</p>
-    <p>
-        <label for="name">Поиск по имени</label>
-        <input type="text" name="name">
-    </p>
-    <p>
-        <input type="submit">
-    </p>
-</form>
-<ul>
-    {% for person in persons %}
-    <li>{{ m.print_person(person) }}</li>
-    {% endfor %}
-</ul>
-{% endblock %}
+<div class="container pt-3">
+    <form action="/persons/" method="get" style="display: flex">
+        <div class="form-group">
+        <!--<label for="title">Поиск по названию</label>-->
+            <input type="text" class="form-control" name="name" placeholder="Поиск по имени">
+            <button type="submit" class="btn btn-primary">Найти</button>
+        </div>
+    </form>
+</div>
+<div class="container pt-3">
+    <ul class="list-group">
+        <!-- <p>POPFDOsdfsdfI</p>
+        <p>{{persons}}</p> -->
+        {% for person in persons %}
+        <!-- <p> fdsfs</p> -->
+        <li class="list-group-item">{{ m.print_person(person) }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+    <!-- <div class="container">
+        <form action="/persons/" method="get">
+            <p>А вот тут поиск</p>
+            <p>
+                <label for="name">Поиск по имени</label>
+                <input type="text" name="name">
+            </p>
+            <p>
+                <input type="submit">
+            </p>
+        </form>
+    </div> 
+     <ul>
+        {% for person in persons %}
+        <li>{{ m.print_person(person) }}</li>
+        {% endfor %}
+
+    </ul> -->
+    
+    {% endblock %}

@@ -2,19 +2,20 @@
 
 {% extends "base.html" %}
 {% block content %}
-<form action="/books/" method="get">
-    <p>А вот тут поиск</p>
-    <p>
-        <label for="title">Поиск по названию</label>
-        <input type="text" name="title">
-    </p>
-    <p>
-        <input type="submit">
-    </p>
-</form>
-<ul>
-    {% for book in books %}
-    <li>{{ m.print_book(book) }}</li>
-    {% endfor %}
-</ul>
+<div class="container pt-3" >
+    <form action="/books/" method="get" style="display: flex">
+        <div class="form-group">
+        <!--<label for="title">Поиск по названию</label>-->
+            <input type="text" class="form-control" name="title" placeholder="Поиск по названию">
+            <button type="submit" class="btn btn-primary">Найти</button>
+        </div>
+    </form>
+</div>
+<div class="container pt-3">
+    <ul class="list-group">
+        {% for book in books %}
+        <li class="list-group-item">{{ m.print_book(book) }}</li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request
-from markupsafe import escape
 from pymongo import MongoClient
-from bson import ObjectId, json_util
+from bson import ObjectId
 
-DB_NAME = "library_test10"
+DB_NAME = "library"
 
 app = Flask(__name__)
 client = MongoClient()

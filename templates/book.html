@@ -2,19 +2,31 @@
 
 {% extends "base.html" %}
 {% block content %}
-<p>Инфа о книга</p>
-<ul>
-    <li>{{ m.print_book(book) }}</li>
-</ul>
-<p>Инфа о текущей сделки</p>
-    {% if book['open_deal'] %}
-    <li>{{ m.print_deal(book['open_deal']) }}</li>
-    {% endif %}
-</ul>
-<p>Инфа о закрытых сделках</p>
-<ul>
+
+<div class="container pt-3">
+    <p>Информация о книге</p>
+    <ul class="list-group">
+    <li class="list-group-item">{{ m.print_book(book) }}</li>
+    </ul>
+</div>
+
+{% if book['open_deal'] %}
+<div class="container pt-3">
+    <p>Информация о текущей сделке</p>
+    <ul class="list-group">
+       <li class="list-group-item">{{ m.print_deal(book['open_deal']) }}</li>
+    </ul>
+</div>
+{% endif %}
+
+{%if book['closed_deals'] %}
+<div class="container pt-3">
+    <p>Информация о закрытых сделках</p>
+    <ul class="list-group">
     {% for closed_deal in book['closed_deals'] %}
-    <li>{{ m.print_deal(closed_deal) }}</li>
+        <li class="list-group-item">{{ m.print_deal(closed_deal) }}</li>
     {% endfor %}
-</ul>
+    </ul>
+</div>
+{%endif%}
 {% endblock %}
