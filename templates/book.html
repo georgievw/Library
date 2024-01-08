@@ -10,21 +10,21 @@
     </ul>
 </div>
 
-{% if book['open_deal'] %}
+{% if book['open_loan'] %}
 <div class="container pt-3">
-    <p>Информация о текущей сделке</p>
+    <p>Книга выдана на руки</p>
     <ul class="list-group">
-       <li class="list-group-item">{{ m.print_deal(book['open_deal']) }}</li>
+       <li class="list-group-item">{{ m.print_loan(book['open_loan']) }}</li>
     </ul>
 </div>
 {% endif %}
 
-{%if book['closed_deals'] %}
+{%if book['closed_loans'] %}
 <div class="container pt-3">
-    <p>Информация о закрытых сделках</p>
+    <p>История выдачи книги</p>
     <ul class="list-group">
-    {% for closed_deal in book['closed_deals'] %}
-        <li class="list-group-item">{{ m.print_deal(closed_deal) }}</li>
+    {% for closed_loan in book['closed_loans'] %}
+        <li class="list-group-item">{{ m.print_loan(closed_loan)}}</li>
     {% endfor %}
     </ul>
 </div>

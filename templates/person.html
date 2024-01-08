@@ -9,23 +9,23 @@
     </ul>
 </div>
 
-{% if person['open_deals']%}
+{% if person['open_loans']%}
 <div class="container pt-3">
-    <p>Информация о текущих сделках</p>
+    <p>Список выданных книг</p>
     <ul class="list-group">
-    {% for open_deal in person['open_deals'] %}
-        <li class="list-group-item">{{ m.print_deal(open_deal) }}</li>
+    {% for open_loan in person['open_loans'] %}
+        <li class="list-group-item">{{ m.print_loan(open_loan) }}</li>
     {% endfor %}
     </ul>
 </div>
 {% endif %}
 
-{%if person['closed_deals'] %}
+{%if person['closed_loans'] %}
 <div class="container pt-3">
-    <p>Информация о закрытых сделках</p>
+    <p>История выдач</p>
     <ul class="list-group">
-    {% for closed_deal in person['closed_deals'] %}
-        <li class="list-group-item">{{ m.print_deal(closed_deal) }}</li>
+    {% for closed_loan in person['closed_loans'] %}
+        <li class="list-group-item">{{ m.print_loan(closed_loan) }}</li>
     {% endfor %}
     </ul>
 </div>
