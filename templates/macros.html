@@ -1,44 +1,42 @@
 {% macro print_book(book) %}
-<ul class="list-group list-group-horizontal">
-    <li class="list-group-item">
+<tr>
+    <td>
         <a href="/books/{{book['_id']}}"> {{book['title']}}</a> 
-    </li>
-    <!-- <li class="list-group-item">{{ book['title'] }}</li> -->
-    <li class="list-group-item">{{ book['isbn'] }}</li>
-    <li class="list-group-item">{{ ', '.join(book['authors'])}}</li>
-    <li class="list-group-item">{{ ', '.join(book['genre'])}}</li>
-</ul>
+    </td>
+    <td>{{ book['isbn'] }}</td>
+    <td>{{ ', '.join(book['authors'])}}</td>
+    <td>{{ ', '.join(book['genre'])}}</td>
+</tr>
 {% endmacro %}
 
 {% macro print_person(person) %}
-<ul class="list-group list-group-horizontal">
-    <li class="list-group-item">
+<tr>
+    <td>
         <a href="/persons/{{person['_id']}}"> {{person['name']}}</a> 
-    </li>
-    <!-- <li class="list-group-item">{{ person['name'] }}</li> -->
-    <li class="list-group-item">{{ person['address'] }}</li>
-    <li class="list-group-item">{{ person['phone'] }}</li>
-    <li class="list-group-item">{{ person['passport'] }}</li>
-    <li class="list-group-item">{{ person['registration_date'] }}</li>
-</ul>
+    </td>
+    <td>{{ person['address'] }}</td>
+    <td>{{ person['phone'] }}</td>
+    <td>{{ person['passport'] }}</td>
+    <td>{{ person['registration_date'] }}</td>
+</tr>
 {% endmacro %}
 
 {% macro print_loan(loan) %}
-<ul class="list-group list-group-horizontal">
+<tr>
     {% if loan['person_id'] %}
-    <li class="list-group-item">
+    <td>
         <a href="/persons/{{loan['person_id']}}"> {{loan['person_name']}}</a> 
-    </li>
+    </td>
     {% endif %}
     {% if loan['book_id'] %}
-    <li class="list-group-item">
+    <td>
         <a href="/books/{{loan['book_id']}}"> {{loan['book_title']}}</a> 
-    </li>
+    </td>
     {% endif %}
-    <li class="list-group-item">{{ loan['issue_date']}} </li>
-    <li class="list-group-item">{{ loan['return_date']}} </li>
+    <td>{{ loan['issue_date']}} </td>
+    <td>{{ loan['return_date']}} </td>
     {% if loan['fact_return_date'] %}
-    <li class="list-group-item">{{ loan['fact_return_date'] }} </li>
+    <td>{{ loan['fact_return_date'] }} </td>
     {% endif %}
-</ul>
+</tr>
 {% endmacro %}

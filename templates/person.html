@@ -3,31 +3,61 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container pt-3">
-    <p>Информация о читателе</p>
-    <ul class="list-group">
-        <li class="list-group-item">{{ m.print_person(person) }}</li>
-    </ul>
+    <p>Информация о читателе:</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ФИО читателя</th>
+                <th scope="col">Адрес</th>
+                <th scope="col">Номер телефона</th>
+                <th scope="col">Номер паспорта</th>
+                <th scope="col">Дата регистрации</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ m.print_person(person) }}
+        </tbody> 
+    </table>
 </div>
 
 {% if person['open_loans']%}
 <div class="container pt-3">
-    <p>Список выданных книг</p>
-    <ul class="list-group">
-    {% for open_loan in person['open_loans'] %}
-        <li class="list-group-item">{{ m.print_loan(open_loan) }}</li>
-    {% endfor %}
-    </ul>
+    <p>Список выданных книг:</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Название книги</th>
+                <th scope="col">Дата выдачи</th>
+                <th scope="col">Срок возврата</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for open_loan in person['open_loans'] %}
+            {{ m.print_loan(open_loan) }}
+            {% endfor %}
+        </tbody>         
+    </table>
 </div>
 {% endif %}
 
 {%if person['closed_loans'] %}
 <div class="container pt-3">
-    <p>История выдач</p>
-    <ul class="list-group">
-    {% for closed_loan in person['closed_loans'] %}
-        <li class="list-group-item">{{ m.print_loan(closed_loan) }}</li>
-    {% endfor %}
-    </ul>
+    <p>История выдач:</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Название книги</th>
+                <th scope="col">Дата выдачи</th>
+                <th scope="col">Срок возврата</th>
+                <th scope="col">Реальная дата возврата</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for closed_loan in person['closed_loans'] %}
+                {{ m.print_loan(closed_loan) }}
+            {% endfor %}
+        </tbody>         
+    </table>
 </div>
 {%endif%}
 {% endblock %}

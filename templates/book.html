@@ -4,29 +4,58 @@
 {% block content %}
 
 <div class="container pt-3">
-    <p>Информация о книге</p>
-    <ul class="list-group">
-    <li class="list-group-item">{{ m.print_book(book) }}</li>
-    </ul>
+    <p>Информация о книге:</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Авторы</th>
+                <th scope="col">Жанр</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{ m.print_book(book) }}
+        </tbody>            
+    </table>    
 </div>
 
 {% if book['open_loan'] %}
 <div class="container pt-3">
-    <p>Книга выдана на руки</p>
-    <ul class="list-group">
-       <li class="list-group-item">{{ m.print_loan(book['open_loan']) }}</li>
-    </ul>
+    <p>Книга выдана на руки:</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Название книги</th>
+                <th scope="col">Дата выдачи</th>
+                <th scope="col">Срок возврата</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ m.print_loan(book['open_loan']) }}
+        </tbody>         
+    </table>
 </div>
 {% endif %}
 
 {%if book['closed_loans'] %}
 <div class="container pt-3">
-    <p>История выдачи книги</p>
-    <ul class="list-group">
-    {% for closed_loan in book['closed_loans'] %}
-        <li class="list-group-item">{{ m.print_loan(closed_loan)}}</li>
-    {% endfor %}
-    </ul>
+    <p>История выдачи книги:</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ФИО читателя</th>
+                <th scope="col">Дата выдачи</th>
+                <th scope="col">Срок возврата</th>
+                <th scope="col">Реальная дата возврата</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for closed_loan in book['closed_loans'] %}
+                {{ m.print_loan(closed_loan) }}
+            {% endfor %}
+        </tbody>         
+    </table>
 </div>
 {%endif%}
 {% endblock %}

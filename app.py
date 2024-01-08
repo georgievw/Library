@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 from pymongo import MongoClient
 from bson import ObjectId
 
-DB_NAME = "new_library_test5"
+DB_NAME = "library2"
 
 app = Flask(__name__)
 client = MongoClient()

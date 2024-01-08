@@ -12,10 +12,21 @@
     </form>
 </div>
 <div class="container pt-3">
-    <ul class="list-group">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Авторы</th>
+                <th scope="col">Жанр</th>
+            </tr>
+        </thead>
+        <tbody>
         {% for book in books %}
-        <li class="list-group-item">{{ m.print_book(book) }}</li>
+        {{ m.print_book(book) }}
         {% endfor %}
-    </ul>
+        </tbody>            
+    </table>
+
 </div>
 {% endblock %}

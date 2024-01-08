@@ -4,10 +4,10 @@ import random
 from pymongo import MongoClient
 from faker import Faker
 
-DB_NAME = "new_library_test5"
-N_PERSONS = 10
-N_BOOKS = 20
-N_LOANS = 30
+DB_NAME = "library2"
+N_PERSONS = 1000
+N_BOOKS = 2000
+N_LOANS = 3000
 
 client = MongoClient()
 db = client[DB_NAME]
@@ -32,7 +32,7 @@ for _ in range(N_BOOKS):
     book = dict()
     book['authors'] = [fake.name() for _ in range(fake.random_int(1, 2))]
     book['title'] = fake.catch_phrase()#f'Книга {fake.random_int(1, 100)}'
-    book['genre'] = [f'Жанр {fake.random_int(1, 10)}' for _ in range(fake.random_int(1, 1))]
+    book['genre'] = [f'Жанр {fake.random_int(1, 9)}' for _ in range(fake.random_int(1, 1))]
     book['isbn'] = fake.isbn13()
     books.insert_one(book)
 
